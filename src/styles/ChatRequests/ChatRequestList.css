@@ -1,0 +1,67 @@
+.chat-requests-list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: auto;
+  overflow-y: auto;
+}
+
+.chat-request-item {
+  display: flex;
+  flex-direction: column;
+  padding: var(--cometchat-padding-3, 12px) var(--cometchat-padding-4, 16px);
+  border-bottom: 1px solid var(--cometchat-border-color-light, #F5F5F5);
+  gap: var(--cometchat-padding-2, 8px);
+}
+
+.chat-request-item:hover {
+  background-color: var(--cometchat-background-color-03, #F5F5F5);
+}
+
+.chat-request-subtitle {
+  color: var(--cometchat-text-color-secondary, #727272);
+  font: var(--cometchat-font-caption1-regular, 400 12px Roboto);
+}
+
+.chat-request-actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  gap: var(--cometchat-padding-2, 8px);
+  margin-top: var(--cometchat-padding-2, 8px);
+}
+
+.chat-request-accept-btn {
+  /* Use CometChat's button styling */
+}
+
+.chat-request-accept-btn .cometchat-button {
+  background-color: var(--cometchat-primary-color, #6852D6);
+  color: white;
+}
+
+.chat-request-reject-btn {
+  /* Use CometChat's button styling */
+}
+
+.chat-request-reject-btn .cometchat-button {
+  background-color: #fff;
+  border: 1px solid var(--cometchat-border-color-dark, #DCDCDC);
+  color: var(--cometchat-text-color-primary, #141414);
+}
+
+.chat-requests-empty {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  padding: var(--cometchat-padding-6, 24px);
+}
+
+.chat-requests-empty p {
+  color: var(--cometchat-text-color-secondary, #727272);
+  font: var(--cometchat-font-body-regular, 400 15px Roboto);
+  text-align: center;
+} 

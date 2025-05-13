@@ -1,0 +1,106 @@
+# ========================================
+# ⚙️ Node.js / JavaScript / TypeScript
+# ========================================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# ========================================
+# 🧠 Build Output
+# ========================================
+dist/
+build/
+.next/
+out/
+.cache/
+coverage/
+
+# ========================================
+# 📦 Vite / Webpack / SWC / Turbopack / Metro
+# ========================================
+.vite/
+webpack-stats.json
+.swc/
+turbo/
+metro-cache/
+expo/
+
+# ========================================
+# ⚡ Firebase / Supabase / Web3
+# ========================================
+firebase-debug.log
+supabase/.temp/
+.env.local
+.env.development
+.env.production
+.env.test
+*.env
+
+# ========================================
+# 🔐 Secrets / Keys
+# ========================================
+*.pem
+*.key
+*.crt
+*.cert
+*.p12
+*.asc
+
+# ========================================
+# 🧹 Editor Stuff
+# ========================================
+.vscode/
+.idea/
+*.code-workspace
+.DS_Store
+Thumbs.db
+
+# ========================================
+# 📦 OS + Misc
+# ========================================
+*.swp
+*.swo
+*.bak
+*.tmp
+*.log
+*.tgz
+*.gz
+
+# ========================================
+# 📷 Images / Media Caches (optional)
+# ========================================
+*.webp
+*.psd
+*.ai
+*.xcf
+*.tiff
+
+# ========================================
+# ⚛️ React Native / Expo
+# ========================================
+android/
+ios/
+*.xcworkspace
+*.xcodeproj
+*.pbxproj
+
+# ========================================
+# 🚀 Git / Linting / Testing
+# ========================================
+!.prettierrc
+!.eslintrc
+.nyc_output/
+.eslintcache
+*.test.js.snap
+
+# ========================================
+# 🔁 Local DB / IndexedDB / Storage
+# ========================================
+localforage/
+indexeddb/
+storage/
