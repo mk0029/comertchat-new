@@ -27,7 +27,7 @@ const CometChatCreateGroup = ({ setShowCreateGroup, onGroupCreated = () => { } }
         const createdGroup = await CometChat.createGroup(group);
         CometChatGroupEvents.ccGroupCreated.next(createdGroup)
         onGroupCreated(createdGroup);
-        setAppState({ type: "updateSelectedItemGroup", payload: createdGroup });
+        setAppState({ selectedItemGroup: createdGroup });
         console.log("Group created successfully:", createdGroup);
         setShowCreateGroup(false);
       } catch (error) {

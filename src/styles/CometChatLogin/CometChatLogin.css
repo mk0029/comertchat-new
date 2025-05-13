@@ -1,335 +1,132 @@
-.cometchat-login__container {
-  display: flex;
-  flex-direction: column;
-  gap: var(--cometchat-padding-8, 32px);
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-  background: var(--cometchat-background-color-04, #e8e8e8);
-}
-.cometchat-login__container * {
-  box-sizing: border-box;
-  margin: 0;
-}
-
-.cometchat-login__content {
-  display: flex;
-  width: 400px;
-  padding: var(--cometchat-padding-7, 28px) var(--cometchat-padding-10, 40px);
-  flex-direction: column;
-  gap: var(--cometchat-padding-7, 28px);
-  flex-shrink: 0;
-  border-radius: var(--cometchat-radius-5, 20px);
-  border: 1px solid var(--cometchat-border-color-default, #e8e8e8);
-  background: var(--cometchat-background-color-01, #fff);
-}
-
-.cometchat-login__header {
-  display: flex;
-  flex-direction: column;
-  gap: var(--cometchat-padding-5, 20px);
-  align-self: stretch;
-}
-
-.cometchat-login__logo > img {
-  height: 30px;
-}
-
-.cometchat-login__title {
-  color: var(--cometchat-text-color-primary, #141414);
-  font: var(--cometchat-font-heading1-bold);
-  font-style: normal;
-}
-
-.cometchat-login__sample-users {
-  display: flex;
-  width: 360px;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 8px;
-}
-
-.cometchat-login__sample-users-title {
-  color: var(--cometchat-text-color-primary, #141414);
-  font: var(--cometchat-font-body-medium);
-  font-style: normal;
-}
-
-.cometchat-login__user-list {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  align-self: stretch;
-  flex-wrap: wrap;
-}
-
-.cometchat-login__user {
-  width: 100px;
-  max-width: 100px;
-  min-width: 100px;
-  max-height: 140px;
-  min-height: 140px;
-  height: fit-content;
-
-  display: flex;
-  padding: 10px;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  flex: 1 0 0;
-  border-radius: var(--cometchat-radius-2, 8px);
-  border: 1px solid var(--cometchat-border-color-light, #f5f5f5);
-
-  background: var(--cometchat-background-color-01, #fff);
-  cursor: pointer;
-
-  position: relative;
-}
-
-.cometchat-login__user-selected {
-  border: 1px solid var(--cometchat-border-color-highlight, #6852d6);
-}
-
-.cometchat-login__user-selection-indicator {
-  display: flex;
-  width: 20px;
-  height: 20px;
-  padding: 2.5px;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  right: 1.333px;
-  top: 0;
-  border-radius: 0px var(--cometchat-radius-2, 8px);
-  background: var(--cometchat-icon-color-highlight, #6852d6);
-  right: -1px;
-}
-
-.cometchat-login__user-selection-checked {
-  -webkit-mask: url("../../assets/right-tick-icon.svg") center center no-repeat;
-  mask: url("../../assets/right-tick-icon.svg") center center no-repeat;
-  height: 28px;
-  width: 28px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  -webkit-mask-size: contain;
-  mask-size: contain;
-  border: none;
-  align-self: center;
-  background: white;
-}
-
-.cometchat-login__user-avatar {
-  display: flex;
-  width: 48px;
-  height: 48px;
-  justify-content: center;
-  align-items: center;
-  flex-shrink: 0;
-  border-radius: var(--cometchat-radius-Max, 1000px);
-}
-
-.cometchat-login__user-details {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: var(--cometchat-padding-1, 4px);
-  align-self: stretch;
-}
-
-.cometchat-login__user-name {
-  overflow: hidden;
-  color: var(--cometchat-text-color-primary, #141414);
-  text-align: center;
-  text-overflow: ellipsis;
-  font: var(--cometchat-font-body-medium);
-  font-style: normal;
-}
-
-.cometchat-login__user-uid {
-  overflow: hidden;
-  color: var(--cometchat-text-color-secondary, #727272);
-  text-align: center;
-  text-overflow: ellipsis;
-  font: var(--cometchat-font-caption1-regular);
-  font-style: normal;
-}
-
-.cometchat-login__divider-section {
-  display: flex;
-  align-items: center;
-  gap: 13px;
-  color: var(--cometchat-text-color-tertiary, #a1a1a1);
-  font: var(--cometchat-font-body-regular);
-  font-style: normal;
-}
-
-.cometchat-login__divider {
-  width: 100%;
-  height: 1px;
-  background: var(--cometchat-border-color-default, #e8e8e8);
-  padding: 0;
-}
-
-.cometchat-login__form {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: var(--cometchat-padding-5, 20px);
-  align-self: stretch;
-}
-
-.cometchat-login__input-group {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  text-align: left;
-  gap: 4px;
-}
-
-.cometchat-login__input-label {
-  color: var(--cometchat-text-color-primary, #141414);
-  font: var(--cometchat-font-caption1-medium);
-  font-style: normal;
-}
-
-.cometchat-login__custom-login {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: var(--cometchat-padding-5, 20px);
-  align-self: stretch;
-}
-
-.cometchat-login__input {
-  width: 100%;
-  display: flex;
-  height: 36px;
-  padding: var(--cometchat-padding-2, 8px);
-  align-items: center;
-  gap: var(--cometchat-padding-1, 4px);
-  align-self: stretch;
-  border-radius: var(--cometchat-radius-2, 8px);
-  border: 1px solid var(--cometchat-border-color-light, #f5f5f5);
-  background: var(--cometchat-background-color-02, #fafafa);
-  color: var(--cometchat-text-color-primary, #141414);
-  font: var(--cometchat-font-body-regular);
-  font-style: normal;
-  border: none;
-}
-
-.cometchat-login__input:focus-visible {
-  outline: none;
-}
-
-.cometchat-login_input-Wrapper-text {
-  color: var(--cometchat-text-color-primary, #141414);
-  font: var(--cometchat-font-caption1-medium);
-  font-style: normal;
-}
-
-.cometchat-login__submit-button {
-  width: 100%;
-  display: flex;
-  height: 40px;
-  padding: var(--cometchat-padding-2, 8px) var(--cometchat-padding-5, 20px);
-  justify-content: center;
-  align-items: center;
-  gap: var(--cometchat-padding-2, 8px);
-  align-self: stretch;
-  border-radius: var(--cometchat-radius-2, 8px);
-  background: var(--cometchat-primary-button-background, #6852d6);
-  color: var(--cometchat-static-white, #fff);
-  font: var(--cometchat-font-button-medium);
-  font-style: normal;
-  border: none;
-  cursor: pointer;
-}
-
-.cometchat-login__signup-section {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--cometchat-text-color-secondary, #727272);
-  text-align: center;
-  gap: 4px;
-  font: var(--cometchat-font-body-regular);
-  font-style: normal;
-}
-
-.cometchat-login__signup-link {
-  color: var(--cometchat-text-color-highlight, #6852d6);
-  font: var(--cometchat-font-body-medium);
-  font-style: normal;
-  cursor: pointer;
-}
-
-.cometchat-login__note {
-  width: 100%;
-  color: var(--cometchat-text-color-secondary);
-  font: var(--cometchat-font-body-regular);
-}
-
-.cometchat-login__note-link {
-  color: var(--cometchat-text-color-highlight, #6852d6);
-  cursor: pointer;
-}
-
-/* Clerk UI custom styles */
-.clerk-primary-button {
-  background-color: var(--cometchat-icon-color-highlight, #6852d6) !important;
-  color: white !important;
-}
-
-.clerk-card {
-  border-radius: var(--cometchat-radius-5, 20px) !important;
-  border: 1px solid var(--cometchat-border-color-default, #e8e8e8) !important;
-}
-
-.clerk-form-input {
-  border-radius: var(--cometchat-radius-2, 8px) !important;
-  border: 1px solid var(--cometchat-border-color-light, #f5f5f5) !important;
-  background: var(--cometchat-background-color-02, #fafafa) !important;
-}
-
-/* Loading spinner for Clerk */
-.cometchat-loading {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100dvh;
-  width: 100%;
-  background: var(--cometchat-background-color-04, #e8e8e8);
-}
-
-.cometchat-loading-spinner {
-  width: 40px;
-  height: 40px;
-  margin-bottom: 16px;
-  border: 4px solid rgba(104, 82, 214, 0.3);
-  border-radius: 50%;
-  border-top-color: var(--cometchat-icon-color-highlight, #6852d6);
-  animation: spin 1s ease-in-out infinite;
-}
-
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer components {
+  .cometchat-login__container {
+    @apply flex flex-col gap-8 items-center justify-center w-full h-full bg-theme-bg-tertiary transition-colors duration-200;
   }
-}
 
-/* Error message styling */
-.error-message {
-  padding: 20px;
-  border-radius: var(--cometchat-radius-5, 20px);
-  background-color: #ffeeee;
-  border: 1px solid #ffcccc;
-  color: #d32f2f;
-  text-align: center;
+  .cometchat-login__container * {
+    @apply box-border m-0;
+  }
+
+  .cometchat-login__content {
+    @apply flex w-fit p-7 flex-col gap-7 flex-shrink-0 rounded-[20px] border bg-theme-bg-primary border-theme-border transition-colors duration-200;
+  }
+
+  .cometchat-login__header {
+    @apply flex flex-col gap-5 self-stretch;
+  }
+
+  .cometchat-login__logo > img {
+    @apply h-[30px];
+  }
+
+  .cometchat-login__title {
+    @apply text-theme-text-primary font-bold transition-colors duration-200;
+  }
+
+  .cometchat-login__sample-users {
+    @apply flex w-[360px] flex-col items-start gap-2;
+  }
+
+  .cometchat-login__sample-users-title {
+    @apply text-theme-text-primary font-medium transition-colors duration-200;
+  }
+
+  .cometchat-login__user-list {
+    @apply flex items-center gap-2 self-stretch flex-wrap;
+  }
+
+  .cometchat-login__user {
+    @apply w-[100px] max-w-[100px] min-w-[100px] max-h-[140px] min-h-[140px] h-fit flex p-2.5 flex-col items-center gap-2.5 flex-1 rounded-lg border cursor-pointer relative bg-theme-bg-primary border-theme-border transition-colors duration-200;
+  }
+
+  .cometchat-login__user-selected {
+    @apply border-theme-accent;
+  }
+
+  .cometchat-login__user-selection-indicator {
+    @apply flex w-5 h-5 p-[2.5px] justify-center items-center absolute right-[-1px] top-0 rounded-tr-lg bg-theme-accent transition-colors duration-200;
+  }
+
+  .cometchat-login__user-selection-checked {
+    @apply flex items-center justify-center h-7 w-7 border-none self-center bg-theme-bg-primary transition-colors duration-200;
+    -webkit-mask: url("../../assets/right-tick-icon.svg") center center no-repeat;
+    mask: url("../../assets/right-tick-icon.svg") center center no-repeat;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+  }
+
+  .cometchat-login__user-avatar {
+    @apply flex w-12 h-12 justify-center items-center flex-shrink-0 rounded-full;
+  }
+
+  .cometchat-login__user-details {
+    @apply flex flex-col items-start gap-1 self-stretch;
+  }
+
+  .cometchat-login__user-name {
+    @apply overflow-hidden text-center truncate text-theme-text-primary font-medium transition-colors duration-200;
+  }
+
+  .cometchat-login__user-uid {
+    @apply overflow-hidden text-center truncate text-theme-text-secondary transition-colors duration-200;
+  }
+
+  .cometchat-login__divider-section {
+    @apply flex items-center gap-[13px] text-theme-text-secondary transition-colors duration-200;
+  }
+
+  .cometchat-login__divider {
+    @apply w-full h-px p-0 bg-theme-border transition-colors duration-200;
+  }
+
+  .cometchat-login__form {
+    @apply w-full flex flex-col items-start gap-5 self-stretch;
+  }
+
+  .cometchat-login__input-group {
+    @apply flex flex-col w-full text-left gap-1;
+  }
+
+  .cometchat-login__input-label {
+    @apply text-theme-text-primary font-medium transition-colors duration-200;
+  }
+
+  .cometchat-login__custom-login {
+    @apply w-full flex flex-col items-start gap-5 self-stretch;
+  }
+
+  .cometchat-login__input {
+    @apply w-full flex h-9 p-2 items-center gap-1 self-stretch rounded-lg border-none bg-theme-bg-tertiary text-theme-text-primary transition-colors duration-200;
+  }
+
+  .cometchat-login__input:focus-visible {
+    @apply outline-none;
+  }
+
+  .cometchat-login_input-Wrapper-text {
+    @apply text-theme-text-primary font-medium transition-colors duration-200;
+  }
+
+  .cometchat-login__submit-button {
+    @apply w-full flex h-10 px-5 py-2 justify-center items-center gap-2 self-stretch rounded-lg border-none cursor-pointer text-white bg-theme-accent font-medium transition-colors duration-200;
+  }
+
+  .cometchat-login__signup-section {
+    @apply w-full flex items-center justify-center gap-1 text-center text-theme-text-secondary transition-colors duration-200;
+  }
+  
+  .cometchat-login__signup-link {
+    @apply cursor-pointer text-theme-accent font-medium transition-colors duration-200;
+  }
+  
+  .cometchat-login__note {
+    @apply w-full text-theme-text-secondary transition-colors duration-200;
+  }
+  
+  .cometchat-login__note-link {
+    @apply cursor-pointer text-theme-accent transition-colors duration-200;
+  }
 }

@@ -2,7 +2,6 @@ import chatsIcon from "../../assets/chats.svg";
 import callsIcon from "../../assets/calls.svg";
 import usersIcon from "../../assets/users.svg";
 import groupsIcon from "../../assets/groups.svg";
-import requestsIcon from "../../assets/chats.svg"; // Reusing the chats icon for now
 import "../../styles/CometChatSelector/CometChatTabs.css";
 import { useContext, useState } from "react";
 import { getLocalizedString } from "@cometchat/chat-uikit-react";
@@ -35,11 +34,6 @@ export const CometChatTabs = (props: {
         "name": getLocalizedString("group_title"),
         "icon": groupsIcon,
         "id":"groups"
-    }, {
-        "name": getLocalizedString("requests") || "Requests",
-        "icon": requestsIcon,
-        "id":"requests",
-        "badge": appState.requestsCount
     }]
 
     return (
@@ -62,9 +56,6 @@ export const CometChatTabs = (props: {
                         onMouseLeave={() => setHoverTab("")}
                     >
                         {tabItem.name}
-                        {tabItem.badge && tabItem.badge > 0 && (
-                            <span className="cometchat-tab-component__tab-badge">{tabItem.badge}</span>
-                        )}
                     </div>
                 </div>
             ))}

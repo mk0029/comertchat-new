@@ -2,13 +2,14 @@ import { CometChatAvatar, getLocalizedString } from "@cometchat/chat-uikit-react
 import "../../styles/CometChatDetails/CometChatUserDetails.css";
 import React, { useContext } from 'react';
 import { AppContext } from '../../context/AppContext';
+
 interface UserDetailProps {
     user: CometChat.User;
     onHide?: () => void;
     actionItems?: {
         name: string;
         icon: string;
-        id?:string;
+        id?: string;
     }[];
     showStatus?: boolean;
     onUserActionClick?: (item: {
@@ -25,7 +26,9 @@ export const CometChatUserDetails = (props: UserDetailProps) => {
         showStatus,
         onUserActionClick = () => { }
     } = props;
+    
     const { appState } = useContext(AppContext);
+
     return (
         <>
             <div className="cometchat-user-details__header">
@@ -50,7 +53,7 @@ export const CometChatUserDetails = (props: UserDetailProps) => {
 
                 <div className="cometchat-user-details__content-action">
                     {actionItems.map((actionItem) => (
-                        <div key={actionItem.name} 
+                        <div key={actionItem.id || actionItem.name} 
                         className={`${appState.isFreshChat && actionItem.id === 'delete_chat' ? 'cometchat-user-details__content-action-item-disabled' : ''} cometchat-user-details__content-action-item`}
                         onClick={() =>
                           onUserActionClick(actionItem)

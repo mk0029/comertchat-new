@@ -1,32 +1,38 @@
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import { COMETCHAT_CONSTANTS } from './AppConstants';
-import { CometChatUIKit, UIKitSettingsBuilder } from '@cometchat/chat-uikit-react';
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import { COMETCHAT_CONSTANTS } from "./AppConstants";
+import {
+  CometChatUIKit,
+  UIKitSettingsBuilder,
+} from "@cometchat/chat-uikit-react";
 import { CometChat } from "@cometchat/chat-sdk-javascript";
-import { metaInfo } from './metaInfo';
-import { setupLocalization } from './utils/utils';
+import { metaInfo } from "./metaInfo";
+import { setupLocalization } from "./utils/utils";
 
-const getBrowserTheme = (): 'light' | 'dark' => {
-  const isDarkTheme = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  return isDarkTheme ? 'dark' : 'light';
+const getBrowserTheme = (): "light" | "dark" => {
+  const isDarkTheme = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  return isDarkTheme ? "dark" : "light";
 };
 
 // Initialize localization for the sample app and UI Kit.
 setupLocalization();
 
 // Render the React application
-const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
-root.render(
-  <App theme={getBrowserTheme()} />
+const root = ReactDOM.createRoot(
+  document.getElementById("root") as HTMLElement
 );
+root.render(<App theme={getBrowserTheme()} />);
 
 // Initialize CometChat if credentials are available
 const initCometChat = async () => {
-  const appID: string = COMETCHAT_CONSTANTS.APP_ID || (localStorage.getItem('appId') ?? "");
-  const region: string = COMETCHAT_CONSTANTS.REGION || (localStorage.getItem('region') ?? "");
-  const authKey: string = COMETCHAT_CONSTANTS.AUTH_KEY || (localStorage.getItem('authKey') ?? "");
+  const appID: string =
+    COMETCHAT_CONSTANTS.APP_ID || (localStorage.getItem("appId") ?? "");
+  const region: string =
+    COMETCHAT_CONSTANTS.REGION || (localStorage.getItem("region") ?? "");
+  const authKey: string =
+    COMETCHAT_CONSTANTS.AUTH_KEY || (localStorage.getItem("authKey") ?? "");
 
   if (appID && region && authKey) {
     const uiKitSettings = new UIKitSettingsBuilder()
@@ -38,17 +44,19 @@ const initCometChat = async () => {
 
     try {
       await CometChatUIKit.init(uiKitSettings);
-      console.log('CometChat UI Kit initialized successfully');
-      try { 
+      console.log("CometChat UI Kit initialized successfully");
+      try {
         CometChat.setDemoMetaInfo(metaInfo);
-      } catch (err) { 
+      } catch (err) {
         console.error("Error setting demo meta info:", err);
       }
     } catch (error) {
-      console.error('Error initializing CometChat:', error);
+      console.error("Error initializing CometChat:", error);
     }
   } else {
-    console.log('CometChat credentials not found. Using Clerk authentication only.');
+    console.log(
+      "CometChat credentials not found. Using Clerk authentication only."
+    );
   }
 };
 

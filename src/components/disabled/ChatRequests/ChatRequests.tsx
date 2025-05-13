@@ -1,9 +1,9 @@
-import React, { useContext, useState } from 'react';
-import { AppContext } from '../../context/AppContext';
-import { CometChat } from '@cometchat/chat-sdk-javascript';
+import React, { useContext, useState } from "react";
+import { AppContext } from "../../../context/AppContext";
+import { CometChat } from "@cometchat/chat-sdk-javascript";
 import { getLocalizedString } from "@cometchat/chat-uikit-react";
-import ChatRequestList from './ChatRequestList';
-import '../../styles/ChatRequests/ChatRequests.css';
+import ChatRequestList from "./ChatRequestList";
+import "../../styles/ChatRequests/ChatRequests.css";
 
 interface ChatRequestsProps {
   onItemClick?: (user: CometChat.User) => void;
@@ -12,7 +12,7 @@ interface ChatRequestsProps {
 
 const ChatRequests: React.FC<ChatRequestsProps> = ({ onItemClick, onBack }) => {
   const { appState } = useContext(AppContext);
-  
+
   const handleBackClick = () => {
     if (onBack) {
       onBack();
@@ -29,12 +29,14 @@ const ChatRequests: React.FC<ChatRequestsProps> = ({ onItemClick, onBack }) => {
         )}
         <div className="chat-requests-title">
           {getLocalizedString("requests") || "Requests"}
-          {appState.requestsCount > 0 && (
-            <span className="chat-requests-count">{appState.requestsCount}</span>
+          {appState.requestsCount && appState.requestsCount > 0 && (
+            <span className="chat-requests-count">
+              {appState.requestsCount}
+            </span>
           )}
         </div>
       </div>
-      
+
       <div className="chat-requests-content">
         <ChatRequestList onItemClick={onItemClick} />
       </div>
@@ -42,4 +44,4 @@ const ChatRequests: React.FC<ChatRequestsProps> = ({ onItemClick, onBack }) => {
   );
 };
 
-export default ChatRequests; 
+export default ChatRequests;

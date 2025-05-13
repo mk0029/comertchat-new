@@ -1,105 +1,122 @@
-.messages-wrapper .cometchat-message-list {
-    background: var(--cometchat-background-color-03, #F5F5F5);
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer components {
+  .messages-wrapper .cometchat-message-list {
+    background: var(--cometchat-background-color-03, var(--color-bg-tertiary));
+    transition: background-color 0.2s ease;
+    @apply dark:bg-theme-bg-tertiary;
+  }
 
-.messages-wrapper .cometchat-list__body::-webkit-scrollbar,
-.messages-wrapper .cometchat-list__body::-webkit-scrollbar-thumb {
-    display: none;
-}
+  .messages-wrapper .cometchat-list__body::-webkit-scrollbar,
+  .messages-wrapper .cometchat-list__body::-webkit-scrollbar-thumb {
+    @apply hidden;
+  }
 
-.messages-wrapper .cometchat-header__info {
+  .messages-wrapper .cometchat-header__info {
+    @apply w-6 h-6 cursor-pointer;
     -webkit-mask: url("../../assets/infoIcon.svg") center center no-repeat;
-    background: var(--cometchat-icon-color-primary, #141414);
+    background: var(--cometchat-icon-color-primary, var(--color-text-primary));
     -webkit-mask-size: contain;
-    width: 24px;
-    height: 24px;
-    cursor: pointer;
-}
-.messages-wrapper .message-composer-blocked{
-    display: flex;
-width: 100%;
-height: 48px;
-padding: var(--cometchat-padding-3, 12px) var(--cometchat-padding-5, 20px);
-flex-direction: column;
-justify-content: center;
-align-items: center;
-gap: var(--cometchat-padding-1, 4px);
-flex-shrink: 0;
-background: var(--cometchat-background-color-04, #E8E8E8);
-}
-.messages-wrapper .message-composer-blocked__text{
-    color: var(--cometchat-text-color-secondary, #727272);
-font:var(--cometchat-font-body-regular);
-}
-.messages-wrapper .message-composer-blocked__text > a{
-    text-decoration: underline;
-    text-decoration-color: var(--cometchat-primary-color);
-    cursor: pointer;
-    color: var(--cometchat-primary-color);;
-}
-.messages-wrapper .cometchat-header__info:hover {
-    background: var(--cometchat-icon-color-highlight);
-}
+    transition: background-color 0.2s ease;
+  }
 
-.messages-wrapper .cometchat-message-header__menu {
-    gap: 16px;
-}
+  .messages-wrapper .message-composer-blocked {
+    @apply flex w-full h-12 p-3 flex-col justify-center items-center gap-1 flex-shrink-0;
+    background: var(--cometchat-background-color-04, var(--color-bg-secondary));
+    transition: background-color 0.2s ease;
+  }
 
-.messages-wrapper .cometchat-message-composer {
-    margin: 0px 8px 8px 8px;
-    width: auto;
-    height: auto;
-}
+  .messages-wrapper .message-composer-blocked__text {
+    color: var(--cometchat-text-color-secondary, var(--color-text-secondary));
+    font: var(--cometchat-font-body-regular);
+    transition: color 0.2s ease;
+  }
 
-.messages-wrapper .cometchat-message-list__shimmer {
-    background: var(--cometchat-background-color-03, #F5F5F5);
-}
+  .messages-wrapper .message-composer-blocked__text > a {
+    @apply underline cursor-pointer;
+    text-decoration-color: var(--cometchat-primary-color, var(--color-accent));
+    color: var(--cometchat-primary-color, var(--color-accent));
+    transition: color 0.2s ease;
+  }
 
-.cometchat-header-wrapper {
-    height: 64px;
-    width: 100%;
-    flex-basis: auto;
-}
+  .messages-wrapper .cometchat-header__info:hover {
+    background: var(--cometchat-icon-color-highlight, var(--color-accent));
+  }
 
-.cometchat-message-list-wrapper {
-    width: 100%;
-    height: 100%;
-    flex-basis: auto;
-    overflow: hidden;
-}
+  .messages-wrapper .cometchat-message-header__menu {
+    @apply gap-4 dark:bg-theme-bg-secondary;
+  }
 
-.cometchat-message-list-wrapper>.cometchat {
-    height: 100%;
-    overflow: hidden;
-}
+  .messages-wrapper .cometchat-message-composer {
+    @apply m-2 w-auto h-auto;
+  }
 
-.cometchat-composer-wrapper {
-    width: 100%;
-    height: fit-content;
-    flex-basis: auto;
-}
+  .messages-wrapper .cometchat-message-list__shimmer {
+    background: var(--cometchat-background-color-03, var(--color-bg-tertiary));
+    transition: background-color 0.2s ease;
+  }
 
-.cometchat-messages-wrapper {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background: var(--cometchat-background-color-03, #F5F5F5);
-    overflow: hidden;
-}
+  .cometchat-header-wrapper {
+    @apply h-16 w-full flex-auto flex-shrink-0;
+  }
 
-.messages-wrapper .cometchat-list__header {
-    border-right: none;
-}
+  .cometchat-message-list-wrapper {
+    @apply w-full flex-grow overflow-auto;
+    height: calc(100% - 120px); /* Account for header and composer heights */
+  }
 
-@media (max-width: 768px) {
+  .cometchat-message-list-wrapper > .cometchat {
+    @apply h-full overflow-auto;
+  }
+
+  .cometchat-composer-wrapper {
+    @apply w-full flex-shrink-0;
+    bottom: 0;
+    position: relative;
+  }
+
+  .cometchat-messages-wrapper {
+    @apply w-full h-full flex flex-col items-center justify-between overflow-hidden;
+    background: var(--cometchat-background-color-03, var(--color-bg-tertiary));
+    transition: background-color 0.2s ease;
+    /* Use custom viewport height variables */
+    height: 100vh; /* Fallback */
+    height: calc(var(--vh, 1vh) * 100); /* Use our custom variable */
+  }
+
+  .messages-wrapper .cometchat-list__header {
+    @apply border-r-0;
+  }
+
+  @media (max-width: 768px) {
     .cometchat-messages-wrapper {
-        width: 100vw;
-        position: fixed;
-        top: 0px;
-        left: 0px;
-        z-index: 3;
+      @apply w-screen fixed top-0 left-0 z-[3];
+      height: calc(var(--vh, 1vh) * 100);
+      position: fixed;
+      display: flex;
+      flex-direction: column;
     }
+    
+    /* Fixed height for header */
+    .cometchat-header-wrapper {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    
+    /* Message list should take available space */
+    .cometchat-message-list-wrapper {
+      flex: 1;
+      overflow-y: auto;
+      position: relative;
+    }
+    
+    /* Composer stays at bottom */
+    .cometchat-composer-wrapper {
+      position: sticky;
+      bottom: 0;
+      z-index: 10;
+    }
+  }
 }

@@ -6,5 +6,7 @@ export const COMETCHAT_CONSTANTS = {
   // 4. Copy-paste the values below
   APP_ID: "27479309f0a79988",
   REGION: "IN", // e.g., "us", "eu", etc.
-  AUTH_KEY: "665b26e1930d0527b65260b55bdcd8c780bc4594",
+  // IMPORTANT: Replace this with your Full Access API key from the CometChat dashboard
+  // Go to API Keys section and generate a new Full Access key
+  AUTH_KEY: "78599eb6d5fe9f5810a2c6f79a1d73096ac27c5b",
 };

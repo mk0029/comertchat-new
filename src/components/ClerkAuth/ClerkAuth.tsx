@@ -34,46 +34,29 @@ const ClerkAuth = () => {
 
   return (
     <div className="cometchat-login__container">
-      <div className="cometchat-login__content" style={{ paddingTop: "20px" }}>
+      <div className="cometchat-login__content">
         {error && (
-          <div className="error-message" style={{ marginBottom: "15px" }}>
+          <div className="error-message">
             {error}
             <button
               onClick={() => setError(null)}
+              className="telegram-button mt-2.5 mx-auto block"
               style={{
-                display: "block",
-                margin: "10px auto 0",
                 padding: "5px 10px",
-                border: "none",
-                borderRadius: "4px",
-                backgroundColor: "#f5f5f5",
-                cursor: "pointer",
-              }}
-            >
+                fontSize: "14px",
+              }}>
               Dismiss
             </button>
           </div>
         )}
-        
+
         {isSignUp ? (
           <>
             <SignUp signInUrl="/login" />
-            <div className="cometchat-login__signup-section">
-              <span>Already have an account?</span>
-              <Link to="/login" className="cometchat-login__signup-link">
-                Sign in
-              </Link>
-            </div>
           </>
         ) : (
           <>
             <SignIn signUpUrl="/sign-up" />
-            <div className="cometchat-login__signup-section">
-              <span>Don't have an account?</span>
-              <Link to="/sign-up" className="cometchat-login__signup-link">
-                Sign up
-              </Link>
-            </div>
           </>
         )}
       </div>
@@ -81,4 +64,4 @@ const ClerkAuth = () => {
   );
 };
 
-export default ClerkAuth; 
+export default ClerkAuth;

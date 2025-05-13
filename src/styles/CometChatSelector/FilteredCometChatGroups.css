@@ -1,0 +1,22 @@
+/* FilteredCometChatGroups styles - inherits from CometChatGroups */
+.filtered-cometchat-groups .cometchat-list__empty-view {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  padding: var(--cometchat-padding-4, 16px);
+  text-align: center;
+}
+
+.filtered-cometchat-groups .cometchat-list__empty-view-text {
+  color: var(--cometchat-text-color-secondary, #727272);
+  font: var(--cometchat-font-body-regular, 400 15px Roboto);
+  padding-top: var(--cometchat-padding-3, 12px);
+}
+
+/* Ensure the header has proper styling */
+.filtered-cometchat-groups .cometchat-list__header {
+  height: 64px;
+} 

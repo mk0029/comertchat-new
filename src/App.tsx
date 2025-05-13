@@ -1,16 +1,19 @@
+import "@cometchat/chat-uikit-react/css-variables.css";
 import "./styles/App.css";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter } from "react-router-dom";
-import { AppContextProvider } from "./context/AppContext";
+import { AppProvider } from "./context/AppContext";
 import { Navigate, Route, Routes } from "react-router-dom";
 import { CometChatHome } from "./components/CometChatHome/CometChatHome";
 import { ClerkProvider, useAuth } from "@clerk/clerk-react";
 import ClerkAuth from "./components/ClerkAuth/ClerkAuth";
 import ProtectedRoute from "./components/ProtectedRoute";
 import CometChatClerkIntegration from "./components/CometChatIntegration/CometChatClerkIntegration";
+import { setupViewportHandler } from "./utils/viewportHandler";
 
-// Your Clerk publishable key - replace with your actual key from the Clerk dashboard
+// Use environment variable if available, otherwise use the hardcoded key as fallback
 const CLERK_PUBLISHABLE_KEY =
+  process.env.REACT_APP_CLERK_PUBLISHABLE_KEY ||
   "pk_test_dGhhbmtmdWwtd2FsbGV5ZS0yNy5jbGVyay5hY2NvdW50cy5kZXYk";
 
 if (!CLERK_PUBLISHABLE_KEY) {
@@ -57,6 +60,11 @@ function App(props: IAppProps) {
 
     window.addEventListener("error", handleError);
     return () => window.removeEventListener("error", handleError);
+  }, []);
+
+  // Setup viewport handler for mobile devices
+  useEffect(() => {
+    setupViewportHandler();
   }, []);
 
   // Display setup instructions if no Clerk key is provided
@@ -115,13 +123,15 @@ function App(props: IAppProps) {
         publishableKey={CLERK_PUBLISHABLE_KEY!}
         appearance={{
           elements: {
-            formButtonPrimary: "clerk-primary-button",
-            card: "clerk-card",
-            formFieldInput: "clerk-form-input",
+            formButtonPrimary:
+              "bg-theme-accent hover:opacity-90 text-white py-2 px-4 rounded transition-colors",
+            card: "shadow-md rounded-lg p-6 bg-theme-bg-primary transition-colors duration-200",
+            formFieldInput:
+              "w-full p-2 border border-theme-border rounded focus:ring-2 focus:ring-theme-accent focus:border-theme-accent dark:bg-theme-bg-tertiary dark:text-theme-text-primary transition-colors duration-200",
           },
         }}>
         <ClerkStateHandler>
-          <AppContextProvider>
+          <AppProvider>
             <Routes>
               <Route path="/" element={<Navigate to="/login" replace />} />
               <Route path="/login" element={<ClerkAuth />} />
@@ -137,14 +147,14 @@ function App(props: IAppProps) {
                 }
               />
             </Routes>
-          </AppContextProvider>
+          </AppProvider>
         </ClerkStateHandler>
       </ClerkProvider>
     );
   };
 
   return (
-    <div>
+    <div className="min-h-dvh bg-theme-bg-primary dark:bg-theme-bg-secondary text-theme-text-primary transition-colors duration-200">
       <div className="App">
         <BrowserRouter>
           <AppContent />

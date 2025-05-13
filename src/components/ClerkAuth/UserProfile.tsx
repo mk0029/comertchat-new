@@ -3,6 +3,7 @@ import { useUser, useClerk } from '@clerk/clerk-react';
 import { useNavigate } from 'react-router-dom';
 import { CometChatUIKit } from '@cometchat/chat-uikit-react';
 import '../../styles/UserProfile.css';
+import DarkModeToggle from '../DarkModeToggle/DarkModeToggle';
 
 const UserProfile: React.FC = () => {
   const { user } = useUser();
@@ -38,7 +39,8 @@ const UserProfile: React.FC = () => {
             {user.primaryEmailAddress?.emailAddress || ''}
           </div>
         </div>
-        <button className="user-profile-logout" onClick={handleSignOut}>
+        <DarkModeToggle />
+        <button className="user-profile-logout ml-2" onClick={handleSignOut}>
           Sign Out
         </button>
       </div>

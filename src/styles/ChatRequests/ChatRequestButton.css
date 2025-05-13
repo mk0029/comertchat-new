@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer components {
+  .chat-request-button {
+    @apply inline-flex items-center justify-center px-4 py-2 rounded text-sm font-medium cursor-pointer transition-all duration-200 bg-indigo-500 text-white border-none outline-none w-full mt-2;
+  }
+
+  .chat-request-button:hover {
+    @apply bg-indigo-600;
+  }
+
+  .chat-request-button:active {
+    @apply bg-indigo-700;
+  }
+
+  .chat-request-button:disabled {
+    @apply opacity-60 cursor-not-allowed;
+  }
+
+  .chat-request-button--pending {
+    @apply bg-orange-500;
+  }
+
+  .chat-request-button--pending:hover {
+    @apply bg-orange-600;
+  }
+
+  .chat-request-button--sending {
+    @apply bg-indigo-400;
+  }
+}

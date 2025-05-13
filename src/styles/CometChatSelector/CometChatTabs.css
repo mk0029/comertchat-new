@@ -1,63 +1,33 @@
-.cometchat-tab-component {
-    display: flex;
-    width: 100%;
-    padding: 0px 8px;
-    align-items: flex-start;
-    gap: 8px;
-    border-top: 1px solid var(--cometchat-border-color-light, #F5F5F5);
-    border-right: 1px solid var(--cometchat-border-color-light, #F5F5F5);
-    background: var(--cometchat-background-color-01, #FFF);
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer components {
+  .cometchat-tab-component {
+    @apply flex w-full px-2 items-start gap-2 border-t border-r bg-white dark:bg-gray-900;
+    border-color: var(--cometchat-border-color-light, #f5f5f5);
+  }
 
-.cometchat-tab-component__tab {
-    display: flex;
-    padding: 12px 0px 10px 0px;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 4px;
-    flex: 1 0 0;
-}
+  .cometchat-tab-component__tab {
+    @apply flex py-3 px-0 flex-col justify-center items-center gap-1 flex-1;
+  }
 
-.cometchat-tab-component__tab-icon {
-    display: flex;
-    width: 32px;
-    height: 32px;
-    justify-content: center;
-    align-items: center;
-    background: var(--cometchat-icon-color-secondary, #A1A1A1);
+  .cometchat-tab-component__tab-icon {
+    @apply flex w-8 h-8 justify-center items-center cursor-pointer;
+    background: var(--cometchat-icon-color-secondary, #a1a1a1);
     -webkit-mask-size: contain;
-    cursor: pointer;
-}
+  }
 
-.cometchat-tab-component__tab-text {
+  .cometchat-tab-component__tab-text {
+    @apply text-center cursor-pointer;
     color: var(--cometchat-text-color-secondary, #727272);
-    text-align: center;
     font: var(--cometchat-font-caption1-medium, 500 12px Roboto);
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 4px;
-}
+  }
 
-.cometchat-tab-component__tab-icon-active {
+  .cometchat-tab-component__tab-icon-active {
     background: var(--cometchat-icon-color-highlight);
-}
+  }
 
-.cometchat-tab-component__tab-text-active {
+  .cometchat-tab-component__tab-text-active {
     color: var(--cometchat-text-color-highlight);
-}
-
-.cometchat-tab-component__tab-badge {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--cometchat-primary-color, #6852D6);
-    color: white;
-    border-radius: var(--cometchat-radius-max, 1000px);
-    font: var(--cometchat-font-caption1-medium, 500 10px Roboto);
-    min-width: 16px;
-    height: 16px;
-    padding: 0 4px;
+  }
 }

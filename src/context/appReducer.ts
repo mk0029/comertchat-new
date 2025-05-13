@@ -1,3 +1,12 @@
+interface ChatRequest {
+    sender: CometChat.User;
+    receiver?: CometChat.User;
+    type: string;
+    status: string;
+    timestamp: number;
+    group?: any;
+}
+
 interface defaultStateType {
     activeTab: string;
     selectedItem: CometChat.Conversation | undefined;
@@ -13,14 +22,8 @@ interface defaultStateType {
         group: CometChat.Group
     },
     isFreshChat?: boolean;
-    pendingRequests: Array<{
-        sender: CometChat.User,
-        sentAt: number,
-        status: "pending" | "accepted" | "rejected",
-        type: "user" | "group",
-        group?: CometChat.Group
-    }>;
-    requestsCount: number;
+    requestsCount?: number;
+    pendingRequests: ChatRequest[];
 }
 
 export const defaultAppState: defaultStateType = {
@@ -34,8 +37,8 @@ export const defaultAppState: defaultStateType = {
     showNewChat: false,
     showJoinGroup: false,
     isFreshChat: false,
-    pendingRequests: [],
-    requestsCount: 0
+    requestsCount: 0,
+    pendingRequests: []
 }
 
 export const appReducer = (state = defaultAppState, action: any) => {
@@ -76,47 +79,45 @@ export const appReducer = (state = defaultAppState, action: any) => {
         case 'updateIsFreshChat': {
             return { ...state, isFreshChat: action.payload };
         }
-        case "addPendingRequest": {
-            const existingRequest = state.pendingRequests.find(
-                req => req.sender.getUid() === action.payload.sender.getUid() &&
-                    req.type === action.payload.type
-            );
-            if (existingRequest) {
-                return state; // Request already exists
-            }
-            return {
-                ...state,
-                pendingRequests: [...state.pendingRequests, action.payload],
-                requestsCount: state.requestsCount + 1
-            };
+        case "updateRequestsCount": {
+            return { ...state, requestsCount: action.payload };
+        }
+        case "updatePendingRequests": {
+            return { ...state, pendingRequests: action.payload };
         }
         case "updateRequestStatus": {
-            const updatedRequests = state.pendingRequests.map(req => {
-                if (req.sender.getUid() === action.payload.uid && req.type === action.payload.type) {
-                    return { ...req, status: action.payload.status };
-                }
-                return req;
-            });
-            return {
-                ...state,
-                pendingRequests: updatedRequests,
-                requestsCount: action.payload.status === "pending" ? state.requestsCount : state.requestsCount - 1
-            };
+            const { uid, type, status } = action.payload;
+            const updatedRequests = state.pendingRequests.map(request =>
+                request.sender.getUid() === uid && request.type === type
+                    ? { ...request, status }
+                    : request
+            );
+            return { ...state, pendingRequests: updatedRequests };
         }
         case "removeRequest": {
+            const { uid, type } = action.payload;
             const filteredRequests = state.pendingRequests.filter(
-                req => !(req.sender.getUid() === action.payload.uid && req.type === action.payload.type)
+                request => !(request.sender.getUid() === uid && request.type === type)
             );
+            return { ...state, pendingRequests: filteredRequests };
+        }
+        case "addRequest":
+        case "addPendingRequest": {
+            const newRequest = action.payload;
+            // Check if request already exists
+            const exists = state.pendingRequests.some(
+                req => req.sender.getUid() === newRequest.sender.getUid() && req.type === newRequest.type
+            );
+            if (exists) return state;
+
             return {
                 ...state,
-                pendingRequests: filteredRequests,
-                requestsCount: state.requestsCount > 0 ? state.requestsCount - 1 : 0
+                pendingRequests: [...state.pendingRequests, newRequest],
+                requestsCount: state.requestsCount! + 1
             };
         }
-
         default: {
             return state;
         }
     }
-
 }
