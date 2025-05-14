@@ -5,7 +5,7 @@
 @tailwind utilities;
 @layer components {
   .App {
-    @apply text-center w-screen h-dvh bg-theme-bg-primary dark:bg-theme-bg-secondary transition-colors duration-200;
+    @apply text-center w-screen h-screen bg-theme-bg-primary dark:bg-theme-bg-secondary transition-colors duration-200;
   }
 
   .App-logo {
@@ -36,7 +36,7 @@
   }
 
   .conversations-wrapper {
-    @apply flex w-[30%] max-w-[420px] h-dvh flex-col items-start gap-0 flex-[3] bg-theme-bg-primary transition-colors duration-200;
+    @apply flex w-[30%] max-w-[420px] h-screen flex-col items-start gap-0 flex-[3] bg-theme-bg-primary transition-colors duration-200;
   }
 
   .selector-wrapper {
@@ -88,7 +88,7 @@
   }
 
   .messages-wrapper {
-    @apply w-[40%] h-dvh flex flex-col items-center justify-center flex-[5] bg-theme-bg-tertiary overflow-hidden transition-colors duration-200;
+    @apply w-[40%] h-screen flex flex-col items-center justify-center flex-[5] bg-theme-bg-tertiary overflow-hidden transition-colors duration-200;
   }
 
   .conversations-wrapper .cometchat-list__header-title {
@@ -135,7 +135,7 @@
   }
 
   .app-container {
-    @apply w-full flex flex-col items-center justify-center h-dvh;
+    @apply w-full flex flex-col items-center justify-center h-screen;
   }
 
   .chat-controls {
@@ -167,7 +167,7 @@
   }
 
   .cometchat-loading {
-    @apply flex flex-col items-center justify-center h-dvh bg-theme-bg-primary dark:bg-theme-bg-secondary text-theme-text-primary text-base gap-5 transition-colors duration-200;
+    @apply flex flex-col items-center justify-center h-screen bg-theme-bg-primary dark:bg-theme-bg-secondary text-theme-text-primary text-base gap-5 transition-colors duration-200;
   }
 
   .cometchat-loading-spinner {
@@ -206,4 +206,10 @@
 }
 .cometchat-badge.cometchat-conversations__trailing-view-badge-count {
   @apply h-4 w-4 text-[11px];
+}
+.cometchat-message-list-wrapper div {
+  height: auto !important;
+}
+.cometchat-list__empty-view {
+  @apply mt-10;
 }
